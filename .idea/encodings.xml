@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/components/model/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/customers/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/ecommerce/apis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/ecommerce/customers/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/ecommerce/customers/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/ecommerce/products/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/ecommerce/products/src/main/java/demo/ecommerce/apis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/ecommerce/products/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/ecommerce/sellers/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/ecommerce/users/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

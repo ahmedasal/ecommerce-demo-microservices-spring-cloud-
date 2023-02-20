@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="model" />
+        <module name="apis" />
+        <module name="users" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="customers" target="17" />
+      <module name="product.main" target="17" />
+      <module name="product.test" target="17" />
+      <module name="products" target="17" />
+      <module name="sellers" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="apis" options="-parameters" />
+      <module name="customers" options="-parameters" />
+      <module name="ecommerce-demo-microservices-spring-cloud" options="" />
+      <module name="model" options="-parameters" />
+      <module name="products" options="-parameters" />
+      <module name="sellers" options="-parameters" />
+      <module name="users" options="-parameters" />
+    </option>
+  </component>
+</project>
