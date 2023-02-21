@@ -7,7 +7,6 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -18,6 +17,7 @@ public class Product {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @ManyToOne
     @JoinColumn(name = "merchant_id")

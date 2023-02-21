@@ -6,7 +6,7 @@ import demo.ecommerce.model.Product;
 import demo.ecommerce.model.Merchant;
 import demo.ecommerce.repository.ProductRepo;
 
-import demo.ecommerce.service.ProductService;
+import demo.ecommerce.service.MerchantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +19,7 @@ public class produtController {
     @PersistenceContext
     EntityManager em;
     @Autowired
-    ProductService productService;
+    MerchantService productService;
     @Autowired
     ProductRepo productRepo;
     @Autowired
