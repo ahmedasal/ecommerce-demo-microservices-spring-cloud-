@@ -38,4 +38,21 @@ public class Product {
     private String sku;
     //sku and (npn and gtin)
     //ubc or barcode
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", merchant=" + merchant +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", quantity='" + quantity + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", costPrice=" + costPrice +
+                ", earning=" + earning +
+                ", brand='" + brand + '\'' +
+                ", upc='" + upc + '\'' +
+                ", sku='" + sku + '\'' +
+                '}';
+    }
 }

@@ -1,7 +1,7 @@
-package demo.ecommerce.controller;
+package demo.ecommerce.apis.controller;
 
 import demo.ecommerce.dto.ProductDTO;
-import demo.ecommerce.service.ProductsService;
+import demo.ecommerce.apis.service.ProductsService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

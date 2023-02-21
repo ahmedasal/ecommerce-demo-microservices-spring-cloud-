@@ -9,7 +9,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -32,4 +31,5 @@ public class CartOrder {
     private Date date;
     private Date createDate;
     private OrderStatus status; //enum
+
 }

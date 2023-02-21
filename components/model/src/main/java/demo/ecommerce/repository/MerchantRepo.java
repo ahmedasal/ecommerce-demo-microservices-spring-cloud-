@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MerchantRepo extends JpaRepository<Merchant, Long> {
-
+    Merchant findById(long id);
 }

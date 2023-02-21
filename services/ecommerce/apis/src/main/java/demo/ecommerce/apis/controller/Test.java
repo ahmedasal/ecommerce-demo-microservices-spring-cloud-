@@ -1,6 +1,6 @@
-package demo.ecommerce.controller;
+package demo.ecommerce.apis.controller;
 
-import demo.ecommerce.service.TaxService;
+import demo.ecommerce.apis.service.TaxService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 @RequestMapping
 @AllArgsConstructor
 public class Test {
-    private final CartItemService cartItemService;
+
     private final TaxService taxService;
 
 

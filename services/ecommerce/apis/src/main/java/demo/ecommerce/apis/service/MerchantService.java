@@ -1,4 +1,4 @@
-package demo.ecommerce.service;
+package demo.ecommerce.apis.service;
 
 
 
@@ -14,15 +14,12 @@ public class MerchantService {
     ProductRepo productRepo;
 
     public Product createProduct(Product product) {
-
-        Product p =  productRepo.save(product);
-        return p;
+       return productRepo.save(product);
     }
 
 
-    public Product getProductById(Long Id) {
-        Product product =productRepo.getReferenceById(Id);
-        return product != null ? product : null;
+    public Product getProductById(long Id) {
+        return productRepo.findById(Id);
     }
 
     public void updateProduct(Product product) {

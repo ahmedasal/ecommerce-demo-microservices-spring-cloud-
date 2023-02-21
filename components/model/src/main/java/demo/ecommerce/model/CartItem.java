@@ -7,7 +7,6 @@ import java.math.BigDecimal;
 import java.util.List;
 @Getter
 @Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -37,4 +36,20 @@ public class CartItem {
     @Column(name = "subtotal_price")
     private BigDecimal SubTotal; //per all quantity
 
+    @Override
+    public String toString() {
+        return "CartItem{" +
+                "id=" + id +
+                ", product=" + product +
+                ", cartOrder=" + cartOrder +
+                ", quantity=" + quantity +
+                ", costPrice=" + costPrice +
+                ", earning=" + earning +
+                ", shipping=" + shipping +
+                ", taxesRatio=" + taxesRatio +
+                ", totalTaxes=" + totalTaxes +
+                ", totalPrice=" + totalPrice +
+                ", SubTotal=" + SubTotal +
+                '}';
+    }
 }

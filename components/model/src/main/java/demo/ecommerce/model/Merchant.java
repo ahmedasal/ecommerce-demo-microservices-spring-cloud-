@@ -9,7 +9,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "sellers")
+@Table(name = "merchants")
 public class Merchant {
     public Merchant(long id) {
         this.id = id;

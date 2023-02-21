@@ -1,4 +1,4 @@
-package demo.ecommerce.service;
+package demo.ecommerce.apis.service;
 
 import demo.ecommerce.dto.Mapper;
 import demo.ecommerce.dto.ProductDTO;

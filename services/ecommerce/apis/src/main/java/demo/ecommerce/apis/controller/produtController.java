@@ -1,4 +1,4 @@
-package demo.ecommerce.controller;
+package demo.ecommerce.apis.controller;
 
 import demo.ecommerce.dto.Mapper;
 import demo.ecommerce.dto.ProductDTO;
@@ -6,7 +6,7 @@ import demo.ecommerce.model.Product;
 import demo.ecommerce.model.Merchant;
 import demo.ecommerce.repository.ProductRepo;
 
-import demo.ecommerce.service.MerchantService;
+import demo.ecommerce.apis.service.MerchantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
