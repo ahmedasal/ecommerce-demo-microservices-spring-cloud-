@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: users
+  datasource:
+    username: root
+    password: test123
+    url: jdbc:mysql://localhost:3306/ecommerceApp
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+server:
+  port: 9090

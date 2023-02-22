@@ -57,7 +57,6 @@ public class OrderService {
             cartItemsList.add(cartItem);
         }
         cartOrder.setTotalPrice(totalPrice);
-
         cartOrderRepo.save(cartOrder);
         return "cartOrder added successfully";
     }
