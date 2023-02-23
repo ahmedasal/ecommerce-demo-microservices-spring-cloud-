@@ -10,14 +10,9 @@ import demo.ecommerce.apis.service.MerchantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 @RestController
 @RequestMapping("/product")
-public class produtController {
-    @PersistenceContext
-    EntityManager em;
+public class productController {
     @Autowired
     MerchantService productService;
     @Autowired

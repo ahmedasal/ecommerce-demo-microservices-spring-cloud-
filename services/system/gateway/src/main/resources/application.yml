@@ -1,0 +1,42 @@
+#logging:
+#  level:
+#    root: debug
+#    org:
+#      springframework: debug
+
+server:
+  port: 2222
+spring:
+  application:
+    name: gateway
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      routes:
+        - id: apis
+          uri: lb://api
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
+        - id: users
+          uri: lb://users
+          predicates:
+            - Path=/user/**
+          filters:
+            - RewritePath=/user/(?<segment>.*),/$\{segment}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+eureka:
+  client:
+    register-with-eureka: false
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+    instance:
+      preferIpAddress: true

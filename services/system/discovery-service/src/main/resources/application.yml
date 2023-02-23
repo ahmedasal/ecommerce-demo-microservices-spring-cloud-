@@ -1,0 +1,9 @@
+server:
+  port: 1111
+
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+
+

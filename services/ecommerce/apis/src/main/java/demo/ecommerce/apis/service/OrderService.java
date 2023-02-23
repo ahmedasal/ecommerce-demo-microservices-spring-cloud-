@@ -49,6 +49,7 @@ public class OrderService {
         cartOrder.setCustomer(customerRepo.findById(1));
         cartOrder.setStatus(CartOrder.OrderStatus.CONFIRMED);
         cartOrder = cartOrderRepo.save(cartOrder);
+
         Iterator itr = cartItems.iterator();
         while (itr.hasNext()) {
             CartItemDTO cartItemDTO = (CartItemDTO) itr.next();
@@ -56,6 +57,7 @@ public class OrderService {
             totalPrice = totalPrice.add(cartItem.getTotalPrice());
             cartItemsList.add(cartItem);
         }
+
         cartOrder.setTotalPrice(totalPrice);
         cartOrderRepo.save(cartOrder);
         return "cartOrder added successfully";
@@ -72,9 +74,8 @@ public class OrderService {
         cartItem.setSubTotal(calculateSubTotal(cartItem));
         cartItem.setTotalPrice(calculateTotalPrice(cartItem));
         cartItem.setProduct(productRepo.findById(productId));
-        cartItem.setCartOrder(cartOrderRepo.findById(cartOrder.getId()));
-        cartItem = cartItemRepo.save(cartItem);
-        return cartItem;
+        cartItem.setCartOrder(cartOrder);
+        return cartItemRepo.save(cartItem);
     }
 
 

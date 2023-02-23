@@ -11,3 +11,11 @@ spring:
 
 server:
   port: 9090
+eureka:
+  client:
+    instance:
+       preferIpAddress: true
+    serviceUrl:
+       defaultZone: http://localhost:1111/eureka/
+
+

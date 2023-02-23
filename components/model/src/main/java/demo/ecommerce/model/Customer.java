@@ -2,10 +2,8 @@ package demo.ecommerce.model;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 @Getter
 @Setter
 @ToString
@@ -19,7 +17,10 @@ public class Customer {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(name = "keycloak_id")
+    private String keycloakId;
     private String firstname;
     private String lastname;
     private String email;

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @Controller
@@ -18,6 +19,7 @@ public class OrderController {
     @Autowired
     OrderService orderService;
     @GetMapping("/order")
+    @RolesAllowed("customer")
     public ResponseEntity<String> createOrder(@RequestBody List<CartItemDTO> cartItems) {
       return ResponseEntity.ok(orderService.createOrder(cartItems));
     }

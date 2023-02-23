@@ -18,6 +18,8 @@
         <module>components/model</module>
         <module>services/ecommerce/apis</module>
         <module>services/ecommerce/users</module>
+        <module>services/system/discovery-service</module>
+        <module>services/system/gateway</module>
     </modules>
     <properties>
         <java.version>17</java.version>
@@ -44,6 +46,17 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>2021.0.3</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
 

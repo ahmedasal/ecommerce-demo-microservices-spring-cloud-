@@ -16,8 +16,10 @@ public class Merchant {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(name = "keycloak_id")
+    private String keycloakId;
     private String firstname;
     private String lastname;
     private String email;

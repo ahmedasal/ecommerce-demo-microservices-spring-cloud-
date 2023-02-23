@@ -11,6 +11,8 @@
     <file url="file://$PROJECT_DIR$/services/ecommerce/products/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/ecommerce/sellers/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/ecommerce/users/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/system/discovery-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/system/gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>
