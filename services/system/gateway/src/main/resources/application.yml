@@ -15,7 +15,7 @@ spring:
     gateway:
       routes:
         - id: apis
-          uri: lb://api
+          uri: lb://apis
           predicates:
             - Path=/api/**
           filters:
@@ -35,7 +35,7 @@ management:
 
 eureka:
   client:
-    register-with-eureka: false
+    register-with-eureka: true
     serviceUrl:
       defaultZone: http://localhost:1111/eureka/
     instance:
