@@ -25,7 +25,7 @@ public class CartOrder {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
-    @OneToMany(mappedBy = "cartOrder")
+    @OneToMany(mappedBy = "cartOrder", cascade = CascadeType.ALL)
     List<CartItem> items;
     private BigDecimal totalPrice;
     private Date date;

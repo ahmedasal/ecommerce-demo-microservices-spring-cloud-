@@ -1,6 +1,9 @@
 package demo.ecommerce.model;
 
 import lombok.*;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -11,6 +14,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Entity
 @Table(name = "products")
+@Document(indexName = "product")
 public class Product {
     public Product(long id) {
         this.id = id;
@@ -24,7 +28,7 @@ public class Product {
     private Merchant merchant;
     private String imageUrl;
     private String quantity;
-
+    @Field(type = FieldType.Text)
     private String title;
 
     private String description;

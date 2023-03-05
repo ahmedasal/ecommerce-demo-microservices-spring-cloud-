@@ -2,16 +2,19 @@ spring:
   application:
     name: apis
   datasource:
-    url: jdbc:mysql://localhost:3306/ecommerceApp
+    url: jdbc:mysql://mysqldb:3366/ecApp
     password: test123
     username: root
+
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
+
 
 
 server:
   port: 8181
+
 
 keycloak:
   auth-server-url: http://localhost:8080/

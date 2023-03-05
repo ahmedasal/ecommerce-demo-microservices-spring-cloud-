@@ -44,18 +44,18 @@ public class OrderService {
     public String createOrder(List<CartItemDTO> cartItems) {
         CartOrder cartOrder = new CartOrder();
         BigDecimal totalPrice = new BigDecimal(0);
-        List<CartItem> cartItemsList = new ArrayList<>();
         cartOrder.setCreateDate(new Date());
         cartOrder.setCustomer(customerRepo.findById(1));
-        cartOrder.setStatus(CartOrder.OrderStatus.CONFIRMED);
-        cartOrder = cartOrderRepo.save(cartOrder);
+        cartOrder.setStatus(CartOrder.OrderStatus.CONFIRMED); //pending
+        cartOrder.setItems(new ArrayList<>());
+        // cartOrder = cartOrderRepo.save(cartOrder);
 
         Iterator itr = cartItems.iterator();
         while (itr.hasNext()) {
             CartItemDTO cartItemDTO = (CartItemDTO) itr.next();
-            CartItem cartItem = createCartItem(cartItemDTO.getProductId(), cartItemDTO.getQuantity(), cartOrder);
-            totalPrice = totalPrice.add(cartItem.getTotalPrice());
-            cartItemsList.add(cartItem);
+            CartItem item = createCartItem(cartItemDTO.getProductId(), cartItemDTO.getQuantity(), cartOrder);
+            totalPrice = totalPrice.add(item.getTotalPrice());
+            cartOrder.getItems().add(item);
         }
 
         cartOrder.setTotalPrice(totalPrice);
@@ -63,51 +63,61 @@ public class OrderService {
         return "cartOrder added successfully";
     }
 
+
     public CartItem createCartItem(long productId, int quantity, CartOrder cartOrder) {
+        Product product = productRepo.findById(productId);
         CartItem cartItem = new CartItem();
         cartItem.setQuantity(quantity);
-        cartItem.setCostPrice(getCostPrice(productId));
-        cartItem.setEarning(getEarning(productId));
+        cartItem.setCostPrice(product.getCostPrice());
+        cartItem.setEarning(product.getEarning());
         cartItem.setShipping(new BigDecimal(50));
         cartItem.setTaxesRatio(taxService.getTaxesRatio());
-        cartItem.setTotalTaxes(calculateCartItemTotalTax(cartItem));
-        cartItem.setSubTotal(calculateSubTotal(cartItem));
-        cartItem.setTotalPrice(calculateTotalPrice(cartItem));
-        cartItem.setProduct(productRepo.findById(productId));
+        cartItem.setTotalTaxes(
+                product.getCostPrice().add(product.getEarning())
+                        .multiply(BigDecimal.valueOf(quantity))
+                        .multiply(taxService.getTaxesRatio())
+        );
+        cartItem.setSubTotal(
+                product.getCostPrice().add(product.getEarning())
+                        .multiply(BigDecimal.valueOf(quantity))
+        );
+        cartItem.setTotalPrice(cartItem.getSubTotal().add(cartItem.getShipping()).add(cartItem.getTotalTaxes()));
+        cartItem.setProduct(product);
         cartItem.setCartOrder(cartOrder);
-        return cartItemRepo.save(cartItem);
+        // return cartItemRepo.save(cartItem);
+        return cartItem;
     }
 
 
     //get cost price from database table of product
-    public BigDecimal getCostPrice(long productId) {
-        Object costPrice = em.createQuery("select p.costPrice from Product p where p.id = :id").setParameter("id", productId).getSingleResult();
-        return (BigDecimal) costPrice;
-    }
-    //get earning from database table of product
-    public BigDecimal getEarning(long productId) {
-        Object earning = em.createQuery("select p.earning from Product p where p.id = :id").setParameter("id", productId).getSingleResult();
-        return (BigDecimal) earning;
-    }
+//    public BigDecimal getCostPrice(long productId) {
+//        Object costPrice = em.createQuery("select p.costPrice from Product p where p.id = :id").setParameter("id", productId).getSingleResult();
+//        return (BigDecimal) costPrice;
+//    }
+//    //get earning from database table of product
+//    public BigDecimal getEarning(long productId) {
+//        Object earning = em.createQuery("select p.earning from Product p where p.id = :id").setParameter("id", productId).getSingleResult();
+//        return (BigDecimal) earning;
+//    }
 
     //for all quantity
-    private BigDecimal calculateCartItemTotalTax(CartItem cartItem) {
-        return calculateSubTotalWithoutShipping(cartItem).multiply(taxService.getTaxesRatio());
-    }
+//    private BigDecimal calculateCartItemTotalTax(CartItem cartItem) {
+//        return calculateSubTotalWithoutShipping(cartItem).multiply(taxService.getTaxesRatio());
+//    }
 
     //for all quantity
-    private BigDecimal calculateSubTotal(CartItem cartItem) {
-        return ((cartItem.getCostPrice().add(cartItem.getEarning())).add(cartItem.getShipping())).multiply(BigDecimal.valueOf(cartItem.getQuantity()));
-    }
+//    private BigDecimal calculateSubTotal(CartItem cartItem) {
+//        return ((cartItem.getCostPrice().add(cartItem.getEarning())).add(cartItem.getShipping())).multiply(BigDecimal.valueOf(cartItem.getQuantity()));
+//    }
 
-    private BigDecimal calculateSubTotalWithoutShipping(CartItem cartItem) {
-        return ((cartItem.getCostPrice().add(cartItem.getEarning()))).multiply(BigDecimal.valueOf(cartItem.getQuantity()));
-    }
+//    private BigDecimal calculateSubTotalWithoutShipping(CartItem cartItem) {
+//        return ((cartItem.getCostPrice().add(cartItem.getEarning()))).multiply(BigDecimal.valueOf(cartItem.getQuantity()));
+//    }
 
     //for all quantity
-    private BigDecimal calculateTotalPrice(CartItem cartItem) {
-        return calculateSubTotal(cartItem).add(calculateCartItemTotalTax(cartItem));
-    }
+//    private BigDecimal calculateTotalPrice(CartItem cartItem) {
+//        return calculateSubTotal(cartItem).add(calculateCartItemTotalTax(cartItem));
+//    }
 
     //TODO I will add this feature to calculate shipping for every country
     public BigDecimal calculateShipping(String country, String government) {
