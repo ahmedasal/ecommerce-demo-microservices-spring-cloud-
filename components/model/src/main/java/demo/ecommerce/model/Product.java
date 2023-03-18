@@ -6,6 +6,7 @@ import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Getter
@@ -15,7 +16,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "products")
 @Document(indexName = "product")
-public class Product {
+public class Product implements Serializable {
     public Product(long id) {
         this.id = id;
     }
@@ -40,6 +41,8 @@ public class Product {
     private String brand;
     private String upc;
     private String sku;
+    @Column(name = "home_page_existence")
+    private boolean homePageExistence;
     //sku and (npn and gtin)
     //ubc or barcode
 

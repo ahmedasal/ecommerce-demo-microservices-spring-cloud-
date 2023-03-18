@@ -2,22 +2,27 @@ spring:
   application:
     name: apis
   datasource:
-    url: jdbc:mysql://mysqldb:3366/ecApp
+    url: jdbc:mysql://${mysql_host:localhost}:${mysql_port:3306}/ecommerceApp
     password: test123
     username: root
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
+    show-sql: true
 
-
+elasticsearch_url: localhost:9200
+redis_host: localhost
+redis_port: 6379
+#elasticsearch_port: 9200
+#elasticsearch_host: localhost
 
 server:
   port: 8181
 
 
 keycloak:
-  auth-server-url: http://localhost:8080/
+  auth-server-url: http://${keycloak_host:localhost}:${keycloak_port:8080}/
   bearer-only: true
   public-client: true
   realm: ecommerce
@@ -28,4 +33,4 @@ eureka:
     instance:
       preferIpAddress: true
     serviceUrl:
-      defaultZone: http://localhost:1111/eureka/
+      defaultZone: http://${discovery_host:localhost}:${discovery_port:1111}/eureka/

@@ -65,7 +65,7 @@ public class OrderService {
 
 
     public CartItem createCartItem(long productId, int quantity, CartOrder cartOrder) {
-        Product product = productRepo.findById(productId);
+        Product product = productRepo.findById(productId).get();
         CartItem cartItem = new CartItem();
         cartItem.setQuantity(quantity);
         cartItem.setCostPrice(product.getCostPrice());

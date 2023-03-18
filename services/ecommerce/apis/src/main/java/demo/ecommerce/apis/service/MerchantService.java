@@ -1,7 +1,6 @@
 package demo.ecommerce.apis.service;
 
-
-
+import demo.ecommerce.dto.ProductDTO;
 import demo.ecommerce.model.Product;
 import demo.ecommerce.repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,30 +16,19 @@ public class MerchantService {
        return productRepo.save(product);
     }
 
-
-    public Product getProductById(long Id) {
-        return productRepo.findById(Id);
+    public void updateProduct(ProductDTO dto) {
+        Product entity = productRepo.findById(dto.getId()).get();
+        entity.setBrand(dto.getBrand());
+        entity.setDescription(dto.getDescription());
+        entity.setTitle(dto.getTitle());
+        entity.setBrand(dto.getBrand());
+        entity.setSku(dto.getSku());
+        entity.setUpc(dto.getUpc());
+        productRepo.save(entity);
     }
-
-    public void updateProduct(Product product) {
-        Product productFromDB = getProductById(product.getId());
-        productFromDB.setBrand(product.getBrand());
-        productFromDB.setDescription(product.getDescription());
-        productFromDB.setTitle(product.getTitle());
-        productFromDB.setBrand(product.getBrand());
-        productFromDB.setSku(product.getSku());
-        productFromDB.setUpc(product.getUpc());
-        productRepo.save(productFromDB);
+    public void deleteProduct(Long id) {
+        Product entity = productRepo.findById(id).get();
+        productRepo.delete(entity);
     }
-    public void deleteProduct(Product product) {
-        Product productFromDB = getProductById(product.getId());
-        productRepo.delete(productFromDB);
-    }
-
-
-
-
-
-
 
 }
